@@ -62,9 +62,39 @@ switch (_shop) do
 		ctrlSetText[2505,"Donator Shop"];
 	};
 	
+	case "Corporal":
+	{
+		ctrlSetText[2505,"Corporal Shop"];
+		ctrlShow[2503,false];
+	};
+	
 	case "sergeant":
 	{
-		ctrlSetText[2505,"Sergeants Shop"];
+		ctrlSetText[2505,"Sergeant Shop"];
+		ctrlShow[2503,false];
+	};
+	
+	case "Lieutenant":
+	{
+		ctrlSetText[2505,"Lieutenant Shop"];
+		ctrlShow[2503,false];
+	};
+	
+	case "Captain":
+	{
+		ctrlSetText[2505,"Captain Shop"];
+		ctrlShow[2503,false];
+	};
+	
+	case "Commissioner":
+	{
+		ctrlSetText[2505,"Commissioner Shop"];
+		ctrlShow[2503,false];
+	};
+	
+	case "SWAT":
+	{
+		ctrlSetText[2505,"SWAT Armory"];
 		ctrlShow[2503,false];
 	};
 	

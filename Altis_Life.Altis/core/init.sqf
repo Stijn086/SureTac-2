@@ -143,4 +143,3 @@ if(EQUAL(LIFE_SETTINGS(getNumber,"Pump_service"),1)) then{
 };
 
 [getPlayerUID player,player getVariable["realname",name player]] remoteExec ["life_fnc_wantedProfUpdate",RSERV];
-

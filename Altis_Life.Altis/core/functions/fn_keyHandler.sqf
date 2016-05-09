@@ -269,6 +269,14 @@ switch (_code) do {
 			};
 		};
 	};
+	//Shift+p = fade sound
+	case 23:
+	{
+		if(_shift) then
+		{;
+			_handled = true;
+		};
+	};
 };
 
 _handled;

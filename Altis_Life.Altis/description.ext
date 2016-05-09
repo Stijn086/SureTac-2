@@ -1,5 +1,8 @@
-author = "SureTac Development Team";
+author = "Tonic";
+dev = "SureTac Development Team";
 loadScreen = "textures\armalife.jpg";
+onLoadName = "Altis Life RPG v4.4";
+onLoadMission = "Edited by SureTac Development Team";
 joinUnassigned = 1;
 respawn = BASE;
 respawndelay = 5;
@@ -33,8 +36,8 @@ class RscTitles
 {
 	#include "dialog\progress.hpp"
 	#include "dialog\hud_nameTags.hpp"
+	#include "dialog\hud_stats.hpp"
 	#include "dialog\statusBar.hpp"
-	
 };
 
 class CfgFunctions {
@@ -71,12 +74,15 @@ class CfgSounds
 		sound[] = {"\sounds\flashbang.ogg", 1.0, 1};
 		titles[] = {};
 	};
+	
 	class akbar
     {
         name = "akbar";
         sound[] = {"\sounds\akbar.ogg",1.0, 1};
         titles[] = {};
     };
+};
+
 };
 
 class CfgDebriefing

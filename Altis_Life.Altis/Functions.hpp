@@ -101,7 +101,6 @@ class Life_Client_Core
 		class gather {};
 		class gutAnimal {};
 		class removeContainer {};
-		class suicideBomb  {};
 	};
 
 	class Housing
@@ -205,6 +204,7 @@ class Life_Client_Core
 		class nearATM {};
 		class playerSkins {};
 		class nearestObjects {};
+		class fadeSound {};
 		class fatigueReset {};
 	};
 
@@ -345,7 +345,6 @@ class Life_Client_Core
 		class placestorageBig {};
 		class placestorageSmall {};
 		class placedefinestorage {};
-		class weed {};
 	};
 
 	class Dialog_Controls
