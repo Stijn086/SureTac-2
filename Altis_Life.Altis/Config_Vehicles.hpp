@@ -643,6 +643,24 @@ class LifeCfgVehicles {
             } },
             { "UC", "cop", {
                 "\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_02_co.paa"
+            } },
+			{ "Police", "cop",{
+				"textures\Cop\car\Police_SUV_1.jpg"
+			} },
+			{ "Farrari", "civ",{
+			    "textures\Civ\car\TRG_hobos_ferrari_SUV.jpg"
+			} },
+			{ "Red Gull", "Civ",{
+			    "textures\Civ\car\TRG_hobos_rudgull_rally.jpg"
+			} },
+			{ "Pimp", "civ",{
+			    "textures\Civ\car\pimp.jpg"
+			} },
+			{ "KB Monster", "Civ",{
+			    "textures\Civ\car\TRG_hobos_KB_hatch.jpg"
+			} },
+			{ "Blue Flame", "Civ",{
+			    "textures\Civ\car\flames.jpg"
 			} }
         };
     };
@@ -750,6 +768,9 @@ class LifeCfgVehicles {
             } },
             { "Digi Green", "reb", {
                 "\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_indp_co.paa"
+            } },
+			{ "Orange Hex", "reb", {
+                "textures\Civ\Heli\heli_yellow_hex.jpg"
             } },
             { "EMS White", "med", {
                 "#(argb,8,8,3)color(1,1,1,0.8)"

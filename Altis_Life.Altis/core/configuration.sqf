@@ -41,7 +41,7 @@ life_save_gear = [];
 life_container_activeObj = ObjNull;
 life_disable_getIn = false;
 life_disable_getOut = false;
-life_fadesound = true;
+life_fadesound = false;
 life_isSuicide = false;
 life_fatigue = 0.5; //Set the max fatigue limit (50%)
 
