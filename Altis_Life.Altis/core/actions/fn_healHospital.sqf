@@ -1,4 +1,4 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	File: fn_healHospital.sqf
 	Author: Bryan "Tonic" Boardwine

@@ -1,20 +1,19 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	File: fn_vehicleShopLBChange.sqf
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Called when a new selection is made in the list box and
 	displays various bits of information about the vehicle.
 */
 disableSerialization;
-private["_control","_index","_className","_classNameLife","_basePrice","_vehicleInfo","_colorArray","_ctrl"];
+private["_control","_index","_className","_basePrice","_vehicleInfo","_colorArray","_ctrl"];
 _control = _this select 0;
 _index = _this select 1;
 
 //Fetch some information.
 _className = _control lbData _index;
-_classNameLife = _className;
 _vIndex = _control lbValue _index;
 
 _vehicleList = M_CONFIG(getArray,"CarShops",SEL(life_veh_shop,0),"vehicles");
@@ -31,7 +30,7 @@ ctrlShow [2330,true];
 (localize "STR_Shop_Veh_UI_HPower")+ " %4<br/>" +
 (localize "STR_Shop_Veh_UI_PSeats")+ " %5<br/>" +
 (localize "STR_Shop_Veh_UI_Trunk")+ " %6<br/>" +
-(localize "STR_Shop_Veh_UI_Fuel")+ " %7l<br/>" +
+(localize "STR_Shop_Veh_UI_Fuel")+ " %7<br/>" +
 (localize "STR_Shop_Veh_UI_Armor")+ " %8",
 [_basePrice] call life_fnc_numberText,
 [round(_basePrice * 1.5)] call life_fnc_numberText,
@@ -45,12 +44,7 @@ _vehicleInfo select 9
 
 _ctrl = CONTROL(2300,2304);
 lbClear _ctrl;
-
-if(!isClass (missionConfigFile >> CONFIG_LIFE_VEHICLES >> _classNameLife)) then {
-	_classNameLife = "Default"; //Use Default class if it doesn't exist
-	diag_log format["%1: LifeCfgVehicles class doesn't exist",_className];
-};
-_colorArray = M_CONFIG(getArray,CONFIG_LIFE_VEHICLES,_classNameLife,"textures");
+_colorArray = M_CONFIG(getArray,CONFIG_VEHICLES,_className,"textures");
 
 {
 	_flag = SEL(_x,1);

@@ -1,4 +1,4 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	Author: Bryan "Tonic" Boardwine
 
@@ -13,7 +13,7 @@ _ongun = [_this,3,false,[false]] call BIS_fnc_param;
 _override = [_this,4,false,[false]] call BIS_fnc_param;
 _toUniform = [_this,5,false,[false]] call BIS_fnc_param; //Manual override to send items specifically to a uniform.
 _toVest = [_this,6,false,[false]] call BIS_fnc_param; //Manual override to send items specifically to a vest
-_preview = [_this,7,false,[false]] call BIS_fnc_param;
+_preview = [_this,7,false,[true]] call BIS_fnc_param;
 
 //Some checks
 if(EQUAL(_item,"")) exitWith {};
@@ -47,11 +47,11 @@ if(_bool) then {
 				_items = (backpackItems player);
 				removeBackpack player;
 			};
-
+			
 			player addBackpack _item;
 			clearAllItemsFromBackpack player;
-
-			if(!isNil {_items}) then {
+			
+			if(!isNil {_items}) then { 
 				{[_x,true,true,false,true] call life_fnc_handleItem; } foreach _items;
 			};
 		};
@@ -99,13 +99,12 @@ if(_bool) then {
 								if(_item in (assignedItems  player)) then {
 									player addItem _item;
 								} else {
-									player addItem _item;
-									player assignItem _item;
+									player linkItem _item;
 								};
 							};
 						};
 					};
-
+					
 					case 605: {
 						if(_ispack) then{
 							player addItemToBackpack _item;
@@ -113,16 +112,14 @@ if(_bool) then {
 							if(_override) then {
 								player addItem _item;
 							} else {
-								if(EQUAL(headGear player,_item) && {!_preview}) then {
-									player addItem _item;
-								} else {
+								if(!(EQUAL(headGear player,_item))) then{
 									if(!(EQUAL(headGear player,""))) then {removeHeadGear player;};
-									player addHeadGear _item;
+                                    player addHeadGear _item;
 								};
 							};
 						};
 					};
-
+					
 					case 801: {
 						if(_ispack) then {
 							player addItemToBackpack _item;
@@ -144,7 +141,7 @@ if(_bool) then {
 											{player addItemToUniform _x} foreach _items;
 										};
 									};
-								} else {
+								} else {									
 									if(!(EQUAL(uniform player,""))) then {
 										_items = uniformItems player;
 										removeUniform player;
@@ -162,7 +159,7 @@ if(_bool) then {
 							};
 						};
 					};
-
+					
 					case 701: {
 						if(_ispack) then {
 							player addItemToBackpack _item;
@@ -170,7 +167,7 @@ if(_bool) then {
 							if(_override) then{
 								player addItem _item;
 							} else {
-								if(EQUAL(vest player,_item) && {!_preview}) then {
+								if(EQUAL(vest player,_item)) then {
 									player addItem _item;
 								} else {
 									if(!(EQUAL(vest player,""))) then {
@@ -242,7 +239,7 @@ if(_bool) then {
 							private "_type";
 							_type = [_item,301] call life_fnc_accType;
 
-							if(_ongun) then {
+							if(_ongun) then { 
 								switch (_type) do {
 									case 1: { player addPrimaryWeaponItem _item; };
 									case 2: { player addSecondaryWeaponItem _item; };
@@ -338,8 +335,7 @@ if(_bool) then {
 							if(_override) then {
 								player addItem _item;
 							} else {
-								player addItem _item;
-								player assignItem _item;
+								player linkItem _item;
 							};
 						};
 					};
@@ -351,13 +347,12 @@ if(_bool) then {
 							if(_override) then {
 								player addItem _item;
 							} else {
-								player addItem _item;
-								player assignItem _item;
+								player linkItem _item;
 							};
 						};
 					};
 
-					default {
+					default { 
 						if(_ispack) then {
 							player addItemToBackpack _item;
 						} else {
@@ -409,7 +404,7 @@ if(_bool) then {
 				if(_item == "MineDetector") then {
 					player removeItem _item;
 				} else {
-
+					
 					//Lovely code provided by [OCB]Dash
 					private "_tmpfunction";
 					_tmpfunction = {
@@ -424,7 +419,7 @@ if(_bool) then {
 									_numVestWeps = _tWeaponCount select _forEachIndex;
 									if(_x == _this) then
 									{
-										_numVestWeps = _numVestWeps - 1;
+										_numVestWeps = _numVestWeps - 1;                        
 									};
 									(uniformContainer player) addWeaponCargo [ _x,_numVestWeps];
 								}forEach _tWeapons;
@@ -439,7 +434,7 @@ if(_bool) then {
 									_numVestWeps = _tWeaponCount select _forEachIndex;
 									if(_x == _this) then
 									{
-										_numVestWeps = _numVestWeps - 1;
+										_numVestWeps = _numVestWeps - 1;                        
 									};
 									(vestContainer player) addWeaponCargo [ _x,_numVestWeps];
 								}forEach _tWeapons;
@@ -454,7 +449,7 @@ if(_bool) then {
 									_numVestWeps = _tWeaponCount select _forEachIndex;
 									if(_x == _this) then
 									{
-										_numVestWeps = _numVestWeps - 1;
+										_numVestWeps = _numVestWeps - 1;                        
 									};
 									(backpackContainer player) addWeaponCargo [ _x,_numVestWeps];
 								}forEach _tWeapons;
@@ -475,12 +470,12 @@ if(_bool) then {
 				};
 			} else {
 				switch(SEL(_details,5)) do {
-					case 0: {player unassignItem _item; player removeItem _item;};
+					case 0: {player unlinkItem _item;};
 					case 605: {if(EQUAL(headGear player,_item)) then {removeHeadgear player} else {player removeItem _item};};
 					case 801: {if(EQUAL(uniform player,_item)) then {removeUniform player} else {player removeItem _item};};
 					case 701: {if(EQUAL(vest player,_item)) then {removeVest player} else {player removeItem _item};};
-					case 621: {player unassignItem _item; player removeItem _item;};
-					case 616: {player unassignItem _item; player removeItem _item;};
+					case 621: {player unlinkItem _item;};
+					case 616: {player unlinkItem _item;};
 					default {
 						switch (true) do {
 							case (_item in RIFLE_ITEMS) : {player removePrimaryWeaponItem _item;};

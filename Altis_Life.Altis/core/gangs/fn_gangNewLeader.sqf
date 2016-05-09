@@ -1,4 +1,4 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	Author: Bryan "Tonic" Boardwine
 	
@@ -10,7 +10,6 @@ disableSerialization;
 
 if(EQUAL((lbCurSel 2621),-1)) exitWith {hint localize "STR_GNOTF_TransferSelect"};
 _unit = call compile format["%1",CONTROL_DATA(2621)];
-
 if(isNull _unit) exitWith {}; //Bad unit?
 if(_unit == player) exitWith {hint localize "STR_GNOTF_TransferSelf"};
 
@@ -26,8 +25,8 @@ if(_action) then {
 	if(EQUAL(_unitID,"")) exitWith {hint "Bad UID?"}; //Unlikely?
 	grpPlayer SVAR ["gang_owner",_unitID,true];
 	grpPlayer selectLeader _unit;
-	[_unit,grpPlayer] remoteExec ["TON_fnc_clientGangLeader",_unit]; //Boot that bitch!
-	[3,grpPlayer] remoteExec ["TON_fnc_updateGang",RSERV]; //Update the database.
+	[[_unit,grpPlayer],"TON_fnc_clientGangLeader",_unit,false] call life_fnc_MP; //Boot that bitch!
+	[[3,grpPlayer],"TON_fnc_updateGang",false,false] call life_fnc_MP; //Update the database.
 } else {
 	hint localize "STR_GNOTF_TransferCancel";
 };

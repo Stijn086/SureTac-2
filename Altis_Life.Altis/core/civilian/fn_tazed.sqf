@@ -1,4 +1,4 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	File: fn_tazed.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -6,12 +6,9 @@
 	Description:
 	Starts the tazed animation and broadcasts out what it needs to.
 */
-private["_curWep","_curMags","_attach"];
-params [
-	["_unit",objNull,[objNull]],
-	["_shooter",objNull,[objNull]]
-];
-
+private["_unit","_shooter","_curWep","_curMags","_attach"];
+_unit = [_this,0,Objnull,[Objnull]] call BIS_fnc_param;
+_shooter = [_this,1,Objnull,[Objnull]] call BIS_fnc_param;
 if(isNull _unit OR isNull _shooter) exitWith {player allowDamage true; life_istazed = false;};
 
 if(_shooter isKindOf "Man" && alive player) then {
@@ -20,7 +17,6 @@ if(_shooter isKindOf "Man" && alive player) then {
 		_curWep = currentWeapon player;
 		_curMags = magazines player;
 		_attach = if(!(EQUAL(RIFLE,""))) then {RIFLE_ITEMS} else {[]};
-		
 		{player removeMagazine _x} foreach _curMags;
 		player removeWeapon _curWep;
 		player addWeapon _curWep;
@@ -34,17 +30,15 @@ if(_shooter isKindOf "Man" && alive player) then {
 			{player addMagazine _x;} foreach _curMags;
 		};
 		
-		[_unit] remoteExecCall ["life_fnc_tazeSound",RCLIENT];
-		_obj = "Land_ClutterCutter_small_F" createVehicle ASLTOATL(visiblePositionASL player);
+		[[_unit],"life_fnc_tazeSound",true,false] call life_fnc_MP;
+		_obj = "Land_ClutterCutter_small_F" createVehicle ASLTOATL(visiblePositionASL player); //Again why in the fuck was this being created globally? I could of sworn I made it local back in ARMA 3 Beta...
 		_obj setPosATL ASLTOATL(visiblePositionASL player);
-		[player,"AinjPfalMstpSnonWnonDf_carried_fallwc"] remoteExecCall ["life_fnc_animSync",RCLIENT];
-		[0,"STR_NOTF_Tazed",true,[profileName, _shooter GVAR ["realname",name _shooter]]] remoteExecCall ["life_fnc_broadcast",RCLIENT];
+		[[player,"AinjPfalMstpSnonWnonDf_carried_fallwc"],"life_fnc_animSync",true,false] call life_fnc_MP;
+		[[0,"STR_NOTF_Tazed",true,[profileName, _shooter GVAR ["realname",name _shooter]]],"life_fnc_broadcast",true,false] call life_fnc_MP;
 		_unit attachTo [_obj,[0,0,0]];
 		disableUserInput true;
 		sleep 15;
-		
-		[player,"amovppnemstpsraswrfldnon"] remoteExecCall ["life_fnc_animSync",RCLIENT];
-		
+		[[player,"amovppnemstpsraswrfldnon"],"life_fnc_animSync",true,false] call life_fnc_MP;
 		if(!(player GVAR ["Escorting",false])) then {
 			detach player;
 		};

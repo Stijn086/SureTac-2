@@ -1,4 +1,5 @@
-#include "..\script_macros.hpp"
+#include <macro.h>
+#define DEBUG true
 #define SPY_SETTINGS(TYPE,SETTING) TYPE(missionConfigFile >> "SpyGlass" >> SETTING)
 /*
 	File: fn_variableCheck.sqf
@@ -17,6 +18,8 @@ _DB_Functions = SPY_SETTINGS(getArray,"DB_Functions");
 _allowedVariables = SPY_SETTINGS(getArray,"allowedVariables");
 _allowedVariables_UI = SPY_SETTINGS(getArray,"allowedVariables_UI");
 _profileCount = count allVariables profileNameSpace;
+
+if(true) exitWith {}; //Disabled Variable Checking till all variable are added
 
 /* Build Player Slots because we name them and they are counted as variables */
 for "_i" from 1 to 125 do {
@@ -58,7 +61,7 @@ _checkFunction = {
 							_find = _allowedVariables find [_x,_varType];
 							if(EQUAL(_find,-1)) then {
 								diag_log format["Variable: %1 is not allowed TYPE: %2 NS: MN",_x,_varType];
-								//failMission "SpyGlass";
+								failMission "SpyGlass";
 							};
 						};
 					};
@@ -80,7 +83,7 @@ _uiCheckFunction = {
 								_find = _allowedVariables_UI find [_x,_varType];
 								if(EQUAL(_find,-1)) then {
 									diag_log format["Variable: %1 is not allowed TYPE: %2 NS: UI",_x,_varType];
-									//failMission "SpyGlass";
+									failMission "SpyGlass";
 								};
 							};
 						};

@@ -1,4 +1,4 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	@version: 1.7
 	@file_name: fn_fetchCfgDetails.sqf

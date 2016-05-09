@@ -1,4 +1,4 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	File: fn_chopShopMenu.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -20,15 +20,10 @@ _control = CONTROL(39400,39402);
 {
 	if(alive _x) then {
 		_className = typeOf _x;
-		_classNameLife = _className;
 		_displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
 		_picture = getText(configFile >> "CfgVehicles" >> _className >> "picture");
-
-		if(!isClass (missionConfigFile >> CONFIG_LIFE_VEHICLES >> _classNameLife)) then {
-			_classNameLife = "Default"; //Use Default class if it doesn't exist
-			diag_log format["%1: LifeCfgVehicles class doesn't exist",_className];
-		};
-		_price = M_CONFIG(getNumber,CONFIG_LIFE_VEHICLES,_classNameLife,"chopShop");
+		
+		_price = M_CONFIG(getNumber,CONFIG_VEHICLES,_className,"chopShop");
 		if(!isNil "_price" && EQUAL(count crew _x,0)) then {
 			_control lbAdd _displayName;
 			_control lbSetData [(lbSize _control)-1,str(_forEachIndex)];

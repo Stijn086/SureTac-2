@@ -1,4 +1,3 @@
-#include "..\..\script_macros.hpp"
 /*
 	File: fn_medicLoadout.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -20,5 +19,6 @@ player assignItem "ItemCompass";
 player addItem "ItemWatch";
 player assignItem "ItemWatch";
 
-[] call life_fnc_playerSkins;
+[[player,0,"textures\medic_uniform.jpg"],"life_fnc_setTexture",true,false] call life_fnc_MP;
+
 [] call life_fnc_saveGear;

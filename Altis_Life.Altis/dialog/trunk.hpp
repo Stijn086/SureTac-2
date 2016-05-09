@@ -2,8 +2,8 @@ class TrunkMenu
 {
 	idd = 3500;
 	name = "TrunkMenu";
-	movingEnable = 0;
-	enableSimulation = 1;
+	movingEnable = false;
+	enableSimulation = true;
 	
 	class controlsBackground
 	{

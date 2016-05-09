@@ -2,7 +2,7 @@ class Life_impound_menu
 {
 	idd = 2800;
 	name="life_vehicle_shop";
-	movingEnable = 0;
+	movingEnabled = 0;
 	enableSimulation = 1;
 	onLoad = "ctrlShow [2330,false];";
 	
@@ -84,7 +84,7 @@ class Life_impound_menu
 		{
 			idc = -1;
 			text = "$STR_Global_Sell";
-			onButtonClick = "[] call life_fnc_sellGarage; closeDialog 0;";
+			onButtonClick = "[] call life_fnc_sellGarage;";
 			x = 0.26 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
 			y = 0.9 - (1 / 25);
 			w = (6.25 / 40);

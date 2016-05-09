@@ -1,4 +1,4 @@
-#include "..\script_macros.hpp"
+#include <macro.h>
 /*
 	Master client initialization file
 */
@@ -13,27 +13,10 @@ diag_log "--------------------------------- Starting Altis Life Client Init ----
 diag_log "------------------------------------------------------------------------------------------------------";
 waitUntil {!isNull player && player == player}; //Wait till the player is ready
 [] call compile PreprocessFileLineNumbers "core\clientValidator.sqf";
-enableSentences false;
 
 //Setup initial client core functions
 diag_log "::Life Client:: Initialization Variables";
 [] call compile PreprocessFileLineNumbers "core\configuration.sqf";
-
-//Set bank amount for new players
-switch (playerSide) do {
-	case west: {
-		BANK = LIFE_SETTINGS(getNumber,"bank_cop");
-		life_paycheck = LIFE_SETTINGS(getNumber,"paycheck_cop");
-	};
-	case civilian: {
-		BANK = LIFE_SETTINGS(getNumber,"bank_civ");
-		life_paycheck = LIFE_SETTINGS(getNumber,"paycheck_civ");
-	};
-	case independent: {
-		BANK = LIFE_SETTINGS(getNumber,"bank_med");
-		life_paycheck = LIFE_SETTINGS(getNumber,"paycheck_med");
-	};
-};
 
 diag_log "::Life Client:: Variables initialized";
 diag_log "::Life Client:: Setting up Eventhandlers";
@@ -89,7 +72,6 @@ switch (playerSide) do {
 player SVAR ["restrained",false,true];
 player SVAR ["Escorting",false,true];
 player SVAR ["transporting",false,true];
-player SVAR ["playerSurrender",false,true];
 
 diag_log "Past Settings Init";
 [] execFSM "core\fsm\client.fsm";
@@ -105,7 +87,7 @@ diag_log format["                End of Altis Life Client Init :: Total Executio
 diag_log "------------------------------------------------------------------------------------------------------";
 
 life_sidechat = true;
-[player,life_sidechat,playerSide] remoteExecCall ["TON_fnc_managesc",RSERV];
+[[player,life_sidechat,playerSide],"TON_fnc_managesc",false,false,true] call life_fnc_MP;
 0 cutText ["","BLACK IN"];
 [] call life_fnc_hudSetup;
 
@@ -113,33 +95,16 @@ life_sidechat = true;
 LIFE_ID_PlayerTags = ["LIFE_PlayerTags","onEachFrame","life_fnc_playerTags"] call BIS_fnc_addStackedEventHandler;
 LIFE_ID_RevealObjects = ["LIFE_RevealObjects","onEachFrame","life_fnc_revealObjects"] call BIS_fnc_addStackedEventHandler;
 
-player SVAR ["steam64ID",steamid];
+player SVAR ["steam64ID",getPlayerUID player];
 player SVAR ["realname",profileName,true];
 
 life_fnc_moveIn = compileFinal
 "
-	life_disable_getIn = false;
 	player moveInCargo (_this select 0);
-	life_disable_getOut = true;
 ";
 
 [] spawn life_fnc_survival;
 
-[] spawn life_fnc_fatigueReset;
-
-[] spawn {
-	while {true} do {
-		waitUntil{(!isNull (findDisplay 49)) && (!isNull (findDisplay 602))}; // Check if Inventory and ESC dialogs are open
-		(findDisplay 49) closeDisplay 2; // Close ESC dialog
-		(findDisplay 602) closeDisplay 2; // Close Inventory dialog
-	};
-};
-
 CONSTVAR(life_paycheck); //Make the paycheck static.
 if(EQUAL(LIFE_SETTINGS(getNumber,"enable_fatigue"),0)) then {player enableFatigue false;};
-
-if(EQUAL(LIFE_SETTINGS(getNumber,"Pump_service"),1)) then{
-	[] execVM "core\fn_Setup_Sation_Service.sqf";
-};
-
-[getPlayerUID player,player getVariable["realname",name player]] remoteExec ["life_fnc_wantedProfUpdate",RSERV];
+[[getPlayerUID player,player getVariable["realname",name player]],"life_fnc_wantedProfUpdate",false,false] spawn life_fnc_MP;

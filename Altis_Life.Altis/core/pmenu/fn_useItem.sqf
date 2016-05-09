@@ -1,8 +1,8 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	File: fn_useItem.sqf
 	Author: Bryan "Tonic" Boardwine
-
+	
 	Description:
 	Main function for item effects and functionality through the player menu.
 */
@@ -27,47 +27,43 @@ switch (true) do {
 			};
 		};
 	};
-
+	
 	case (EQUAL(_item,"boltcutter")): {
 		[cursorTarget] spawn life_fnc_boltcutter;
 		closeDialog 0;
 	};
-
+	
 	case (EQUAL(_item,"blastingcharge")): {
 		player reveal fed_bank;
 		(group player) reveal fed_bank;
 		[cursorTarget] spawn life_fnc_blastingCharge;
 	};
-
+	
 	case (EQUAL(_item,"defusekit")): {
 		[cursorTarget] spawn life_fnc_defuseKit;
 	};
-
-	case (EQUAL(_item,"storagesmall")): {
-		[] call life_fnc_storageBoxSmall;
+	
+	case (_item in ["storagesmall","storagebig"]): {
+		[_item] call life_fnc_storageBox;
 	};
-
-	case (EQUAL(_item,"storagebig")): {
-		[] call life_fnc_storageBoxBig;
-	};
-
+	
 	case (EQUAL(_item,"spikeStrip")): {
 		if(!isNull life_spikestrip) exitWith {hint localize "STR_ISTR_SpikesDeployment"};
 		if(([false,_item,1] call life_fnc_handleInv)) then {
 			[] spawn life_fnc_spikeStrip;
 		};
 	};
-
+	
 	case (EQUAL(_item,"fuelFull")): {
 		if(vehicle player != player) exitWith {hint localize "STR_ISTR_RefuelInVehicle"};
 		[] spawn life_fnc_jerryRefuel;
 	};
-
+	
 	case (EQUAL(_item,"lockpick")): {
 		[] spawn life_fnc_lockpick;
 	};
-
-	case (_item in ["apple","rabbit","salema","ornate","mackerel","tuna","mullet","catshark","turtlesoup","hen","rooster","sheep","goat","donuts","tbacon","peach"]): {
+	
+	case (_item in ["apple","rabbit","salema","ornate","mackerel","tuna","mullet","catshark","turtle","turtlesoup","donuts","tbacon","peach"]): {
 		if(!(EQUAL(M_CONFIG(getNumber,"VirtualItems",_item,"edible"),-1))) then {
 			if([false,_item,1] call life_fnc_handleInv) then {
 				_val = M_CONFIG(getNumber,"VirtualItems",_item,"edible");
@@ -84,11 +80,11 @@ switch (true) do {
 	case (EQUAL(_item,"pickaxe")): {
 		[] spawn life_fnc_pickAxeUse;
 	};
-
+	
 	default {
 		hint localize "STR_ISTR_NotUsable";
 	};
 };
-
+	
 [] call life_fnc_p_updateMenu;
 [] call life_fnc_hudUpdate;

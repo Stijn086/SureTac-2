@@ -1,23 +1,26 @@
-#include "..\..\script_macros.hpp"
 /*
-	File: fn_medicSiren.sqf
 	Author: Bryan "Tonic" Boardwine
 	
 	Description:
-	Starts the medic siren sound for other players
+	Start playing the siren for medics.
+	
+	*NOTE I DO NOT HAVE A SOUND FOR THIS BUT I"M LEAVING THE CODE HERE FOR OTHER PEOPLE TO ADD IT*.
 */
+
+
 private["_vehicle"];
-_vehicle = param [0,ObjNull,[ObjNull]];
+_vehicle = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
 
 if(isNull _vehicle) exitWith {};
-if(isNil {_vehicle GVAR "siren"}) exitWith {};
+if(isNil {_vehicle getVariable "siren"}) exitWith {};
 
-while {true} do {
-	if(!(_vehicle GVAR "siren")) exitWith {};
-	if(EQUAL(count crew _vehicle,0)) then {_vehicle SVAR ["siren",false,true]};
+while {true} do
+{
+	if(!(_vehicle getVariable "siren")) exitWith {};
+	if(count (crew (_vehicle)) == 0) then {_vehicle setVariable["siren",false,true]};
 	if(!alive _vehicle) exitWith {};
 	if(isNull _vehicle) exitWith {};
-	_vehicle say3D "medicSiren";//Class/name specified in description.ext
-	sleep 4.275;//Exactly matches the length of the audio file.
-	if(!(_vehicle GVAR "siren")) exitWith {};
+	_vehicle say3D "SirenLong";
+	sleep 4.7;
+	if(!(_vehicle getVariable "siren")) exitWith {};
 };

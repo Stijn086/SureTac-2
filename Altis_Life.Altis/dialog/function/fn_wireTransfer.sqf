@@ -1,14 +1,13 @@
-#include "..\..\script_macros.hpp"
+#include <macro.h>
 /*
 	Author: Bryan "Tonic" Boardwine
 	
 	Description:
 	Initiates the wire-transfer
 */
-params [
-	["_value",0,[0]],
-	["_from","",[""]]
-];
+private["_value","_from"];
+_value = [_this,0,0,[0]] call BIS_fnc_param;
+_from = [_this,1,"",[""]] call BIS_fnc_param;
 
 if(EQUAL(_value,0) OR EQUAL(_from,"") OR EQUAL(_from,profileName)) exitWith {}; //No
 ADD(BANK,_value);
