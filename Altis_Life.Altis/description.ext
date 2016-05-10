@@ -1,13 +1,13 @@
-author = "Tonic and Itsyuka";
-onLoadName = "Altis Life RPG v4.0";
-onLoadMission = "An RPG game mode developed by Tonic";
+author = "Tonic";
+loadScreen = "textures\armalife.jpg";
 joinUnassigned = 1;
 respawn = BASE;
 respawndelay = 5;
-disabledAI = true;
+disabledAI = 1;
 disableChannels[]={0,1,2};
 enableDebugConsole = 1;
 respawnDialog = 0;
+saving = 0;
 
 class Header
 {
@@ -23,24 +23,19 @@ corpseLimit = 150;
 corpseRemovalMinTime = 999;
 corpseRemovalMaxTime = 9999;
 
-//SpyGlass configuration
-SPY_Enable = true;
-
 #include "Config_Spyglass.hpp"
-
-#include "dialog\MasterHandler.h"
+#include "CfgRemoteExec.hpp"
+#include "dialog\MasterHandler.hpp"
 #include "Config_Master.hpp"
 
-class RscTitles
-{
-	#include "dialog\ui.hpp"
+class RscTitles {
 	#include "dialog\progress.hpp"
-	#include "dialog\hud_nameTags.h"
+	#include "dialog\hud_nameTags.hpp"
+	#include "dialog\hud_stats.hpp"
 };
 
-class CfgFunctions
-{
-	#include "Functions.h"
+class CfgFunctions {
+	#include "Functions.hpp"
 };
 
 class CfgSounds
@@ -50,6 +45,13 @@ class CfgSounds
 	{
 		name = "SirenLong";
 		sound[] = {"\sounds\Siren_Long.ogg", 1.0, 1};
+		titles[] = {};
+	};
+
+	class medicSiren
+	{
+		name = "medicSiren";
+		sound[] = {"\sounds\medic_siren.ogg", 1.0, 1};
 		titles[] = {};
 	};
 

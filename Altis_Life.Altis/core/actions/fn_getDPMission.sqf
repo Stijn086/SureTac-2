@@ -1,4 +1,4 @@
-#include <macro.h>
+#include "..\..\script_macros.hpp"
 /*
 	File: fn_getDPMission.sqf
 	Author: Bryan "Tonic" Boardwine
@@ -8,7 +8,7 @@
 	Needs to be revised.
 */
 private["_dp","_target"];
-_target = [_this,0,ObjNull,[ObjNull]] call BIS_fnc_param;
+_target = param [0,ObjNull,[ObjNull]];
 if(str(_target) in LIFE_SETTINGS(getArray,"delivery_points")) then {
 	private "_point";
 	_point = LIFE_SETTINGS(getArray,"delivery_points");

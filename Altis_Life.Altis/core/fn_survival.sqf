@@ -1,4 +1,4 @@
-#include <macro.h>
+#include "..\script_macros.hpp"
 /*
 	Author: Bryan "Tonic" Boardwine
 	
@@ -61,12 +61,12 @@ while {true} do {
 	
 	/* Adjustment of carrying capacity based on backpack changes */
 	if(EQUAL(backpack player,"")) then {
-		life_maxWeight = life_maxWeightT;
+		life_maxWeight = LIFE_SETTINGS(getNumber,"total_maxWeight");
 		_bp = backpack player;
 	} else {
 		if(!(EQUAL(backpack player,"")) && {!(EQUAL(backpack player,_bp))}) then {
 			_bp = backpack player;
-			life_maxWeight = life_maxWeightT + (round(FETCH_CONFIG2(getNumber,CONFIG_VEHICLES,_bp,"maximumload") / 4));
+			life_maxWeight = LIFE_SETTINGS(getNumber,"total_maxWeight") + round(FETCH_CONFIG2(getNumber,CONFIG_VEHICLES,_bp,"maximumload") / 4);
 		};
 	};
 	

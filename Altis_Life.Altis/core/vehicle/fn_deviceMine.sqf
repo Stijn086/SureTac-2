@@ -1,3 +1,4 @@
+#include "..\..\script_macros.hpp"
 /*
 	Author: Bryan "Tonic" Boardwine
 	
@@ -32,19 +33,19 @@ _item = switch(true) do {
 	case (_zone in ["heroin_1"]): {"heroin_unprocessed"};
 	case (_zone in ["cocaine_1"]): {"cocaine_unprocessed"};
 	case (_zone in ["weed_1"]): {"cannabis"};
-	case (_zone in ["lead_1"]): {"copper_unrefined"};
-	case (_zone in ["iron_1"]): {"iron_unrefined"};
-	case (_zone in ["salt_1"]): {"salt_unrefined"};
-	case (_zone in ["sand_1"]): {"sand"};
-	case (_zone in ["diamond_1"]): {"diamond_uncut"};
-	case (_zone in ["oil_1","oil_2"]): {"oil_unprocessed"};
-	case (_zone in ["rock_1"]): {"rock"};
+	case (_zone in ["copper_mine"]): {"copper_unrefined"};
+	case (_zone in ["iron_mine"]): {"iron_unrefined"};
+	case (_zone in ["salt_mine"]): {"salt_unrefined"};
+	case (_zone in ["sand_mine"]): {"sand"};
+	case (_zone in ["diamond_mine"]): {"diamond_uncut"};
+	case (_zone in ["oil_field_1","oil_field_2"]): {"oil_unprocessed"};
+	case (_zone in ["rock_quarry"]): {"rock"};
 	default {""};
 };
 
 if(_item == "") exitWith {hint "Bad Resource?"; life_action_inUse = false;};
 _vehicle setVariable ["mining",true,true]; //Lock the device
-[_vehicle,"life_fnc_soundDevice",true,false] call life_fnc_MP; //Broadcast the 'mining' sound of the device for nearby units.
+_vehicle remoteExec ["life_fnc_soundDevice",RCLIENT]; //Broadcast the 'mining' sound of the device for nearby units.
 
 life_action_inUse = false; //Unlock it since it's going to do it's own thing...
 
@@ -83,16 +84,16 @@ while {true} do {
 	if(local _vehicle) then {
 		_vehicle setFuel (fuel _vehicle)-0.045;
 	} else {
-		[[_vehicle,(fuel _vehicle)-0.04],"life_fnc_setFuel",_vehicle,false] call life_fnc_MP;
+		[_vehicle,(fuel _vehicle)-0.04] remoteExecCall ["life_fnc_setFuel",_vehicle];
 	};
 	
 	if(fuel _vehicle == 0) exitWith {titleText[localize "STR_NOTF_OutOfFuel","PLAIN"];};
 	titleText[format[localize "STR_NOTF_DeviceMined",_sum],"PLAIN"];
-	_vehicle setVariable["Trunk",[_items,_space + _itemWeight],true];
+	_vehicle SVAR ["Trunk",[_items,_space + _itemWeight],true];
 	_weight = [_vehicle] call life_fnc_vehicleWeight;
 	_sum = [_item,15,_weight select 1,_weight select 0] call life_fnc_calWeightDiff; //Get a sum base of the remaining weight.. 
 	if(_sum < 1) exitWith {titleText[localize "STR_NOTF_DeviceFull","PLAIN"];};
 	sleep 2;
 };
 
-_vehicle setVariable["mining",nil,true];
+_vehicle SVAR ["mining",nil,true];

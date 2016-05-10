@@ -1,4 +1,4 @@
-#include <macro.h>
+#include "..\..\script_macros.hpp"
 /*
     File: fn_saveGear.sqf
     Author: Bryan "Tonic" Boardwine
@@ -137,7 +137,10 @@ if(count (PISTOL_ITEMS) > 0) then {
     if (_val > 0) then {
 		_yItems pushBack [_x,_val];
     };
-} forEach LIFE_SETTINGS(getArray,"allowedSavedVirtualItems");
+} forEach [
+	"pickaxe","fuelEmpty","fuelFull", "spikeStrip", "lockpick", "defuseKit","storageSmall","storageBig","redgull","coffee","waterBottle","apple","peach","tbacon","donuts",
+	"rabbit","salema","ornate","mackerel","tuna","mullet","catshark","turtleSoup","hen","rooster","sheep","goat"
+];
 
 _return pushBack _uItems;
 _return pushBack _uMags;

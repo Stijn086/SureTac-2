@@ -1,4 +1,4 @@
-#include <macro.h>
+#include "..\..\script_macros.hpp"
 /*
 	File: fn_updateRequest.sqf
 	Author: Tonic
@@ -17,10 +17,16 @@ _packet pushBack _array;
 
 [] call life_fnc_saveGear;
 _packet pushBack life_gear;
+
+_array = [];
+_array pushBack life_hunger;
+_array pushBack life_thirst;
+_packet pushBack _array;
+
 switch (playerSide) do {
 	case civilian: {
 		_packet pushBack life_is_arrested;
 	};
 };
 
-[_packet,"DB_fnc_updateRequest",false,false] call life_fnc_MP;
+_packet remoteExecCall ["DB_fnc_updateRequest",RSERV];
