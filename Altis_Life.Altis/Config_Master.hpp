@@ -36,7 +36,7 @@ class Life_Settings {
 
     /* Player-related systems */
     enable_fatigue = true; //Set to false to disable the ARMA 3 false system.
-    total_maxWeight = 48; //Static variable for the maximum weight allowed without having a backpack
+    total_maxWeight = 60; //Static variable for the maximum weight allowed without having a backpack
     paycheck_period = 5; //Scaled in minutes
 
     /* Impound Variables */

@@ -48,12 +48,9 @@ A lot of this is just C&P with different code. It's kinda simple to add / remove
 
 
 
-switch (playerSide) do
+switch (playerSide) do { 
 
-{ 
-
-case civilian: 
-    {
+case civilian: {
      player addEventHandler ["Fired", {
             if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count POLICE_ZONES > 0) then {
                 deleteVehicle (_this select 6);
@@ -63,12 +60,9 @@ case civilian:
     };
 };
 
-switch (playerSide) do
+switch (playerSide) do { 
 
-{ 
-
-case civilian:
-    {
+case civilian: {
      player addEventHandler ["Fired", {
             if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count CIV_ZONES > 0) then {
                 deleteVehicle (_this select 6);
@@ -78,12 +72,9 @@ case civilian:
     };
 };
 
-switch (playerSide) do
+switch (playerSide) do {
 
-{
-
-case civilian:
-    {
+case civilian: {
      player addEventHandler ["Fired", {
             if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count KOS_ZONES > 0) then {
              deleteVehicle (_this select 6);
