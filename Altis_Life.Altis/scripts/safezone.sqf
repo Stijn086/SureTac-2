@@ -59,7 +59,7 @@ case civilian:
                 deleteVehicle (_this select 6);
                 titleText [PZ_MSG, "PLAIN", 3];
             };
-        }];  
+        }
     };
 };
 
@@ -74,7 +74,7 @@ case civilian:
                 deleteVehicle (_this select 6);
                 titleText [CIV_MSG, "PLAIN", 3];
             };
-        }];  
+        };
     };
 };
 
@@ -89,6 +89,6 @@ case civilian:
              deleteVehicle (_this select 6);
              titleText [KOS_MSG, "PLAIN", 3];
             };
-        }];  
+        };
     };
 };
