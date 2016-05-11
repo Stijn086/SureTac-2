@@ -24,17 +24,17 @@ A lot of this is just C&P with different code. It's kinda simple to add / remove
 
 
 
-#define POLICE_ZONES    [["pz_xx", 50], ["pz_kav", 50], ["pz_kav1", 50], ["pz_kav2", 50], ["pz_kav3", 50], ["pz_hq", 50], ["pz_at", 50], ["pz_pr", 50], ["pz_hp", 50]]
+#define POLICE_ZONES    [["pz_xx", 1], ["pz_kav", 1], ["pz_kav1", 1], ["pz_kav2", 1], ["pz_kav3", 1], ["pz_hq", 1], ["pz_at", 1], ["pz_pr", 1], ["pz_hp", 1]]
 
-#define CIV_ZONES    [["cz_xx", 50], ["cz_kav", 50], ["cz_reb", 50], ["cz_reb1", 50], ["cz_reb2", 50], ["cz_hos", 50], ["cz_hos1", 50], ["cz_at", 50], ["cz_pr", 50]]
+#define CIV_ZONES    [["cz_xx", 1], ["cz_kav", 1], ["cz_reb", 1], ["cz_reb1", 1], ["cz_reb2", 1], ["cz_hos", 1], ["cz_hos1", 1], ["cz_at", 1], ["cz_pr", 1]]
 
-#define KOS_ZONES    [["kos_xx", 50], ["kos_fd", 50]]
-
-
+#define KOS_ZONES    [["kos_xx", 1], ["kos_fd", 1]]
 
 
 
-#define PZ_MSG "You are entering the Police Base. Do not Kill or Rob here!"
+
+
+#define PZ_MSG "You are entering a Police Base. Do not Kill or Rob here!"
 
 #define CIV_MSG "You are entering a Civilian SafeZone. Do not commit crimes, rob people, or kill!"
 
