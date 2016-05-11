@@ -65,7 +65,7 @@ class CarShops {
             { "O_Truck_03_transport_F", 200000, { "trucking" }, { "", "", -1 } },
             { "O_Truck_03_covered_F", 250000, { "trucking" }, { "", "", -1 } },
             { "B_Truck_01_box_F", 350000, { "trucking" }, { "", "", -1 } },
-            { "O_Truck_03_device_F", 450000, { "trucking" }, { "", "", -1 } }
+            { "O_Truck_03_device_F", 2000000, { "trucking" }, { "", "", -1 } }
         };
     };
 
