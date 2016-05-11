@@ -11485,7 +11485,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=232;
+		items=251;
 		class Item0
 		{
 			position[]={8459.6777,104.56568,25131.203};
@@ -13308,6 +13308,232 @@ class Mission
 			name="reb_v_9";
 			type="Empty";
 			angle=15.516753;
+		};
+		class Item232
+		{
+			position[]={16077.304,15.840942,16999.141};
+			name="kos_fd";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorRed";
+			fillName="DiagGrid";
+			a=180;
+			b=180;
+		};
+		class Item233
+		{
+			position[]={11729.002,162.74602,7205.9419};
+			name="kos_xx";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorRed";
+			fillName="DiagGrid";
+			a=3700;
+			b=3600;
+			angle=-127.453;
+		};
+		class Item234
+		{
+			position[]={3212.4167,2.0027723,12909.578};
+			name="pz_xx";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			fillName="DiagGrid";
+			a=100;
+			b=50;
+			angle=511.1344;
+		};
+		class Item235
+		{
+			position[]={3344.3086,1.1946898,12952.16};
+			name="pz_kav";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			fillName="DiagGrid";
+			a=35;
+			b=20;
+			angle=756.698;
+		};
+		class Item236
+		{
+			position[]={3211.2053,0.032880016,12848.594};
+			name="pz_kav2";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			fillName="DiagGrid";
+			a=20;
+			b=50;
+			angle=544.12964;
+		};
+		class Item237
+		{
+			position[]={3292.4204,2.0716228,12941.07};
+			name="pz_kav3";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			fillName="DiagGrid";
+			a=50;
+			b=40;
+		};
+		class Item238
+		{
+			position[]={14174.4,19.58,16269.376};
+			name="pz_hq";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			fillName="DiagGrid";
+			a=55;
+			b=40;
+			angle=481.418;
+		};
+		class Item239
+		{
+			position[]={13810.789,20.119076,18959.945};
+			name="pz_at";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			fillName="DiagGrid";
+			a=70;
+			b=30;
+			angle=859.71399;
+		};
+		class Item240
+		{
+			position[]={16594.936,11,12782.039};
+			name="pz_pr";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			fillName="DiagGrid";
+			a=70;
+			b=70;
+			angle=388.16797;
+		};
+		class Item241
+		{
+			position[]={23531.539,13.000837,19935.438};
+			name="pz_hp";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			fillName="DiagGrid";
+			a=35;
+			b=30;
+			angle=686.0473;
+		};
+		class Item242
+		{
+			position[]={3655.8962,10.382175,13098.006};
+			name="cz_kav";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=35;
+			b=35;
+			angle=95.720467;
+		};
+		class Item243
+		{
+			position[]={9187.9063,14.554761,21645.879};
+			name="cz_reb";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=40;
+			b=40;
+			angle=148.939;
+		};
+		class Item244
+		{
+			position[]={12293.992,123.9925,8894.6299};
+			name="cz_reb2";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=50;
+			b=35;
+			angle=70.089104;
+		};
+		class Item245
+		{
+			position[]={14773.554,4.9604602,10771.314};
+			name="cz_reb3";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=50;
+			b=50;
+			angle=95.720497;
+		};
+		class Item246
+		{
+			position[]={3752.4514,18.841114,12999.116};
+			name="cz_xx";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=35;
+			b=35;
+			angle=185.24745;
+		};
+		class Item247
+		{
+			position[]={15589.94,18.430899,17204.928};
+			name="cz_hos";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=35;
+			b=35;
+			angle=43.450676;
+		};
+		class Item248
+		{
+			position[]={17488.578,12.829104,13278.539};
+			name="cz_hos1";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=35;
+			b=35;
+			angle=136.83603;
+		};
+		class Item249
+		{
+			position[]={14043.175,25.912092,18743.51};
+			name="cz_at";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=50;
+			b=50;
+			angle=95.720497;
+		};
+		class Item250
+		{
+			position[]={17008.078,16.634939,12839.881};
+			name="cz_pr";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorGreen";
+			fillName="DiagGrid";
+			a=35;
+			b=35;
+			angle=95.720497;
 		};
 	};
 };
