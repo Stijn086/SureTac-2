@@ -31,7 +31,7 @@ class CarShops {
         side = "civ";
         vehicles[] = {
             { "C_Kart_01_Blu_F", 15000 , { "driver" }, { "", "", -1 } },
-            { "C_Kart_01_Fuel_F", 15000, { "driver" }, { "", "", -1 } },
+            { "C_Kart_01_FuelFuel_F", 15000, { "driver" }, { "", "", -1 } },
             { "C_Kart_01_Red_F", 15000, { "driver" }, { "", "", -1 } },
             { "C_Kart_01_Vrana_F", 15000, { "driver" }, { "", "", -1 } }
         };
@@ -74,9 +74,13 @@ class CarShops {
         vehicles[] = {
             { "B_Quadbike_01_F", 2500, { "" }, { "", "", -1 } },
             { "B_G_Offroad_01_F", 12500, { "" }, { "", "", -1 } },
-            { "O_MRAP_02_F", 150000, { "" }, { "", "", -1 } },
-            { "B_Heli_Light_01_F", 325000, { "" }, { "", "", -1 } },
-            { "B_G_Offroad_01_armed_F", 750000, { "rebel" }, { "", "", -1 } }
+            { "O_MRAP_02_F", 160000, { "" }, { "", "", -1 } },
+			{ "I_MRAP_03_F", 200000, { "" }, { "", "", -1 } },
+            { "B_G_Offroad_01_armed_F", 750000, { "rebel" }, { "", "", -1 } },
+			{ "B_Heli_Light_01_F", 325000, { "" }, { "", "", -1 } },
+			{ "O_Heli_Light_02_unarmed_F", 750000, { "" }, { "", "", -1 } },
+			{ "B_Heli_Transport_01_F", 1850000, { "" }, { "", "", -1 } },
+			{ "B_Heli_Transport_03_unarmed_F", 1800000, { "" }, { "", "", -1 } }
         };
     };
 
@@ -365,7 +369,7 @@ class LifeCfgVehicles {
     };
 
     class B_Truck_01_box_F {
-        vItemSpace = 450;
+        vItemSpace = 1000;
         storageFee[] = { 35000, 0, 0, 0 };
         garageSell[] = { 150000, 0, 0, 0 };
         insurance = 2500;
@@ -637,9 +641,9 @@ class LifeCfgVehicles {
             { "Orange", "civ", {
                 "\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_04_co.paa"
             } },
-            { "Police", "cop", {
+            { "UC", "cop", {
                 "\a3\soft_f_gamma\SUV_01\Data\suv_01_ext_02_co.paa"
-            } },
+			} }
         };
     };
 
@@ -688,6 +692,15 @@ class LifeCfgVehicles {
             } }
         };
     };
+	
+	class B_Heli_Transport_03_unarmed_F {
+        vItemSpace = 1000;
+        storageFee[] = { 25000, 0, 0, 0 };
+        garageSell[] = { 750000, 0, 0, 0 };
+        insurance = 2500;
+        chopShop = 525000;
+        textures[] = {};
+    };
 
     class B_Heli_Light_01_F {
         vItemSpace = 90;
@@ -699,7 +712,7 @@ class LifeCfgVehicles {
             { "Police", "cop", {
                 "\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_ion_co.paa"
             } },
-            { "Sheriff", "civ", {
+            { "Sheriff", "cop", {
                 "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_sheriff_co.paa"
             } },
             { "Civ Blue", "civ", {
