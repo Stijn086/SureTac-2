@@ -52,80 +52,43 @@ switch (playerSide) do
 
 { 
 
-case civilian:
-
-{
-
+case civilian: 
+    {
      player addEventHandler ["Fired", {
-
-            if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count POLICE_ZONES > 0) then
-
-            {
-
-             deleteVehicle (_this select 6);
-
-             titleText [PZ_MSG, "PLAIN", 3];
-
-             };
-
+            if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count POLICE_ZONES > 0) then {
+                deleteVehicle (_this select 6);
+                titleText [PZ_MSG, "PLAIN", 3];
+            };
         }];  
-
+    };
 };
-
-};
-
-
 
 switch (playerSide) do
 
 { 
 
 case civilian:
-
-{
-
+    {
      player addEventHandler ["Fired", {
-
-            if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count CIV_ZONES > 0) then
-
-            {
-
-             deleteVehicle (_this select 6);
-
-             titleText [CIV_MSG, "PLAIN", 3];
-
-             };
-
+            if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count CIV_ZONES > 0) then {
+                deleteVehicle (_this select 6);
+                titleText [CIV_MSG, "PLAIN", 3];
+            };
         }];  
-
+    };
 };
-
-};
-
-
 
 switch (playerSide) do
 
 {
 
 case civilian:
-
-{
-
+    {
      player addEventHandler ["Fired", {
-
-            if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count KOS_ZONES > 0) then
-
-            {
-
+            if ({(_this select 0) distance getMarkerPos (_x select 0) < _x select 1} count KOS_ZONES > 0) then {
              deleteVehicle (_this select 6);
-
              titleText [KOS_MSG, "PLAIN", 3];
-
-             };
-
+            };
         }];  
-
-};
-
+    };
 };
